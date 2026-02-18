@@ -15,6 +15,7 @@ import com.online.shiksha.repository.UserRepository;
 
 @RestController
 @RequestMapping("/api/auth")
+
 @CrossOrigin(origins = "*") // Taaki local server se data block na ho
 public class AuthController {
 
