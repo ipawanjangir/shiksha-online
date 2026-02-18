@@ -1,9 +1,13 @@
 FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
-# Saara maal copy karo
+
+# Sabse pehle root se sab kuch copy karo
 COPY . .
-# Folder ke andar jaakar permission fix karo aur build chalao
-RUN chmod +x ./mvnw && ./mvnw clean package -DskipTests
+
+# Ab hum "shiksha" folder ke andar jaakar command chalayenge
+RUN chmod +x ./shiksha/mvnw && cd shiksha && ./mvnw clean package -DskipTests
+
 EXPOSE 8080
-# Jar file dhoond kar chalao
-ENTRYPOINT ["sh", "-c", "java -jar target/*.jar"]
+
+# Jar file ka path bhi sahi kar diya hai
+ENTRYPOINT ["sh", "-c", "java -jar shiksha/target/*.jar"]
